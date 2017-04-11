@@ -8,6 +8,7 @@ const autoprefixer = require('autoprefixer'),
 	cmq = require('css-mqpacker'),
 	cssnano = require('cssnano'),
 	del = require('del'),
+	deploy = require('gulp-gh-pages'),
 	gulp = require('gulp'),
 	imagemin = require('gulp-imagemin'),
 	isDev = !process.env.NODE_ENV || process.env.NODE_ENV === "'dev'",
@@ -215,6 +216,14 @@ gulp.task('default', () => {
 gulp.task('build', (cb) => {
 	runSequence('clean:build',
 		'copy', ['cssBuild', 'webpack', 'html', 'images'], cb);
+});
+
+//
+// DEPLOY TASKS
+//
+gulp.task('deploy', () => {
+	return gulp.src('build/**/*')
+		.pipe(deploy())
 });
 
 /**
