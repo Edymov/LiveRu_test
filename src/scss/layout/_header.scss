@@ -1,0 +1,9 @@
+.page-header {
+	display: flex;
+	justify-content: flex-end;
+	padding: 9px 0;
+	border-bottom: 1px $green solid;
+	&__logo {
+		padding-left: 360px;
+	}
+}
