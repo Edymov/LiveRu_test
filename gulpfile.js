@@ -21,7 +21,7 @@ const autoprefixer = require('autoprefixer'),
 	runSequence = require('run-sequence'),
 	sass = require('gulp-sass'),
 	sassGlob = require('gulp-sass-glob'),
-	svgo = require('imagemin-svgo'),
+	svgmin = require('gulp-svgmin'),
 	svgSprite = require('gulp-svg-sprites'),
 	webpack = require('webpack');
 /*
@@ -146,15 +146,31 @@ gulp.task('webpack', (callback) => {
 //
 
 gulp.task('images', () => {
-	return gulp.src(['./dev/img/*.{jpg,jpeg,png,gif,svg}', '!./dev/img/sprite/'])
+	return gulp.src(['./dev/img/*.{jpg,jpeg,png,gif}', '!./dev/img/sprite/'])
 		.pipe(
 			cache(
 				imagemin({
 					multipass: true,
 					progressive: true,
-					use: [pngquant({quality: '65-80'}), svgo()]
+					use: [pngquant({quality: '65-80'})]
 				})
 			)
+		)
+		.pipe(gulp.dest('./build/img'));
+});
+
+gulp.task('svg', () => {
+	return gulp.src('./dev/img/*.svg')
+		.pipe(svgmin(
+			{
+				plugins: [
+					{
+						cleanupIDs: {
+							remove: false
+						}
+					}
+				]
+			})
 		)
 		.pipe(gulp.dest('./build/img'));
 });

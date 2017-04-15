@@ -5,7 +5,6 @@
 	"main": "gulpfile.js",
 	"dependencies": {
 		"imagemin-pngquant": "^5.0.0",
-		"imagemin-svgo": "^5.2.0",
 		"node-notifier": "^5.1.2"
 	},
 	"devDependencies": {
@@ -35,6 +34,7 @@
 		"gulp-sass": "^3.0.0",
 		"gulp-sass-glob": "^1.0.6",
 		"gulp-svg-sprites": "^4.1.1",
+		"gulp-svgmin": "^1.2.3",
 		"gulp-uglify": "^2.0.0",
 		"gulp.spritesmith": "^6.1.0",
 		"gulplog": "^1.0.0",
