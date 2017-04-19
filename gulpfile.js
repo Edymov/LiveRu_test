@@ -239,7 +239,7 @@ gulp.task('build', (cb) => {
 //
 gulp.task('deploy', () => {
 	return gulp.src('build/**/*')
-		.pipe(deploy())
+		.pipe(deploy());
 });
 
 /**
